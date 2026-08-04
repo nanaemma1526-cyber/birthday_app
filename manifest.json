@@ -1,0 +1,21 @@
+{
+  "name": "🎂 Happy Birthday Abi",
+  "short_name": "Birthday App",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1a0c12",
+  "theme_color": "#ff69b4",
+  "description": "A special birthday app for Abi Cutelyn",
+  "icons": [
+    {
+      "src": "Abi Cutelyn.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "Abi Cutelyn.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
