@@ -8,11 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #1a0c12;
@@ -78,13 +74,8 @@
             margin-top: 20px;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
-        #welcomeScreen .enter-btn:active {
-            transform: scale(0.95);
-        }
-        #menuScreen {
-            display: none;
-            width: 100%;
-        }
+        #welcomeScreen .enter-btn:active { transform: scale(0.95); }
+        #menuScreen { display: none; width: 100%; }
         #menuScreen .profile-pic-small {
             width: 60px;
             height: 60px;
@@ -116,33 +107,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .menu button:active {
-            transform: scale(0.96);
-            background: rgba(255, 105, 180, 0.3);
-        }
-        .menu button.install {
-            border-color: #4CAF50;
-            color: #4CAF50;
-            background: rgba(76, 175, 80, 0.1);
-        }
-        .menu button.secret {
-            border-color: #ffd700;
-            color: #ffd700;
-            background: rgba(255, 215, 0, 0.1);
-        }
-        .menu button.exit {
-            border-color: #ff6b6b;
-            color: #ff6b6b;
-            background: rgba(255, 80, 80, 0.1);
-        }
-        #messageView {
-            display: none;
-            width: 100%;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 10px 0;
-        }
+        .menu button:active { transform: scale(0.96); background: rgba(255, 105, 180, 0.3); }
+        .menu button.install { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.1); }
+        .menu button.secret { border-color: #ffd700; color: #ffd700; background: rgba(255, 215, 0, 0.1); }
+        .menu button.exit { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255, 80, 80, 0.1); }
+        #messageView { display: none; width: 100%; flex-direction: column; align-items: center; text-align: center; padding: 10px 0; }
         #messageView .back-btn {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid #ff69b4;
@@ -154,9 +123,7 @@
             margin-bottom: 25px;
             transition: all 0.2s ease;
         }
-        #messageView .back-btn:active {
-            transform: scale(0.95);
-        }
+        #messageView .back-btn:active { transform: scale(0.95); }
         #messageView .card {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 30px;
@@ -171,25 +138,9 @@
             word-wrap: break-word;
             white-space: pre-wrap;
         }
-        #messageView .card .msg-title {
-            color: #ff69b4;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        #messageView .card .secret-title {
-            color: #ffd700;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        #exitScreen {
-            display: none;
-            text-align: center;
-            width: 100%;
-        }
+        #messageView .card .msg-title { color: #ff69b4; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
+        #messageView .card .secret-title { color: #ffd700; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
+        #exitScreen { display: none; text-align: center; width: 100%; }
         #exitScreen .profile-pic-exit {
             width: 200px;
             height: 200px;
@@ -200,17 +151,8 @@
             margin: 20px auto;
             display: block;
         }
-        #exitScreen .goodbye {
-            font-size: 1.6rem;
-            color: #ff69b4;
-            margin-top: 20px;
-        }
-        .footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #b08ba0;
-        }
-        /* Password Modal */
+        #exitScreen .goodbye { font-size: 1.6rem; color: #ff69b4; margin-top: 20px; }
+        .footer { margin-top: 25px; font-size: 0.8rem; color: #b08ba0; }
         .modal-overlay {
             display: none;
             position: fixed;
@@ -233,11 +175,7 @@
             border: 2px solid #ffd700;
             color: #fff;
         }
-        .modal-box h2 {
-            color: #ffd700;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
+        .modal-box h2 { color: #ffd700; margin-bottom: 20px; font-size: 1.5rem; }
         .modal-box input {
             width: 100%;
             padding: 14px;
@@ -249,9 +187,7 @@
             text-align: center;
             outline: none;
         }
-        .modal-box input::placeholder {
-            color: #aaa;
-        }
+        .modal-box input::placeholder { color: #aaa; }
         .modal-box .modal-buttons {
             display: flex;
             gap: 12px;
@@ -266,19 +202,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .modal-box .modal-buttons .submit-btn {
-            background: #ffd700;
-            color: #1a0c12;
-        }
-        .modal-box .modal-buttons .cancel-btn {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: 1px solid #555;
-        }
-        .modal-box .modal-buttons button:active {
-            transform: scale(0.95);
-        }
-        /* iOS Modal */
+        .modal-box .modal-buttons .submit-btn { background: #ffd700; color: #1a0c12; }
+        .modal-box .modal-buttons .cancel-btn { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #555; }
+        .modal-box .modal-buttons button:active { transform: scale(0.95); }
         .ios-modal {
             display: none;
             position: fixed;
@@ -300,10 +226,7 @@
             border: 2px solid #ff69b4;
             color: #fff;
         }
-        .ios-modal .modal-content h2 {
-            color: #ff69b4;
-            margin-bottom: 15px;
-        }
+        .ios-modal .modal-content h2 { color: #ff69b4; margin-bottom: 15px; }
         .ios-modal .modal-content .close-btn {
             background: #ff69b4;
             border: none;
@@ -314,9 +237,7 @@
             margin-top: 15px;
             cursor: pointer;
         }
-        .ios-modal .modal-content .close-btn:active {
-            transform: scale(0.95);
-        }
+        .ios-modal .modal-content .close-btn:active { transform: scale(0.95); }
         @media (max-width: 400px) {
             h1 { font-size: 1.8rem; }
             .menu button { padding: 14px 16px; font-size: 0.95rem; white-space: normal; }
@@ -334,7 +255,7 @@
         <div class="sub">✨ A special app for you ✨</div>
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic">
         <div style="font-size: 1.4rem; font-weight: 300; color: #ffb6c1; margin: 5px 0 10px;">Abi Cutelyn</div>
-        <button class="enter-btn" onclick="enterApp()">Enter 💖</button>
+        <button class="enter-btn" id="enterBtn">Enter 💖</button>
         <div class="footer">Made with love 💕</div>
     </div>
 
@@ -343,7 +264,6 @@
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
         <h1 style="font-size: 1.6rem; margin-bottom: 5px;">🎉 Happy Birthday</h1>
         <div class="sub">Choose an option below</div>
-
         <div class="menu">
             <button onclick="openMessage('birthday')">💌 Birthday Message</button>
             <button onclick="openMessage('compliment')">✨ Random Compliment</button>
@@ -353,16 +273,13 @@
             <button class="install" onclick="installApp()">📲 Install App</button>
             <button class="exit" onclick="exitApp()">🚪 Exit</button>
         </div>
-
         <div class="footer">💖 For you</div>
     </div>
 
     <!-- MESSAGE VIEW -->
     <div id="messageView">
         <button class="back-btn" onclick="goBackToMenu()">← Back to menu</button>
-        <div class="card" id="messageCard">
-            <!-- content inserted here -->
-        </div>
+        <div class="card" id="messageCard"></div>
     </div>
 
     <!-- EXIT SCREEN -->
@@ -372,7 +289,6 @@
         <div style="font-size: 1.2rem; color: #ffb6c1; margin-top: 10px;">You are loved. ❤️</div>
         <div class="footer" style="margin-top: 30px;">✨ See you soon ✨</div>
     </div>
-
 </div>
 
 <!-- PASSWORD MODAL -->
@@ -400,65 +316,69 @@
 </div>
 
 <script>
-    const audio = new Audio('birthday.mp3');
+    // ---------- AUDIO ----------
+    var audio = new Audio('birthday.mp3');
     audio.loop = true;
     audio.volume = 0.6;
 
-    const welcome = document.getElementById('welcomeScreen');
-    const menu = document.getElementById('menuScreen');
-    const messageView = document.getElementById('messageView');
-    const messageCard = document.getElementById('messageCard');
-    const exitScreen = document.getElementById('exitScreen');
+    // ---------- DOM Elements ----------
+    var welcome = document.getElementById('welcomeScreen');
+    var menu = document.getElementById('menuScreen');
+    var messageView = document.getElementById('messageView');
+    var messageCard = document.getElementById('messageCard');
+    var exitScreen = document.getElementById('exitScreen');
 
-    function enterApp() {
+    // ---------- ENTER BUTTON (FIXED) ----------
+    document.getElementById('enterBtn').addEventListener('click', function() {
         audio.play().catch(function(e) { console.log('Audio play blocked:', e); });
         welcome.style.display = 'none';
         menu.style.display = 'flex';
         messageView.style.display = 'none';
         exitScreen.style.display = 'none';
-    }
+    });
 
+    // ---------- Navigation ----------
     function goBackToMenu() {
         menu.style.display = 'flex';
         messageView.style.display = 'none';
         exitScreen.style.display = 'none';
     }
 
-    // ========== MESSAGES ==========
-    const birthdayMessages = [
-        Abi Cutelyn,\n\nToday is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.\n\nYou have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.\n\nI hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.\n\nHappy Birthday, beautiful soul. 💕,
-        Abi,\n\nOn your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.\n\nI hope you see yourself the way I see you – strong, graceful, and full of love.\n\nYou are deeply cherished. Happy Birthday, Abi. 🌸,
-        Dear Abi,\n\nSome people enter your life and leave a mark that stays forever. You are one of those people.\n\nYour smile, your laughter, your heart – everything about you is a blessing. I hope today and every day after reminds you of just how precious you are.\n\nHappy Birthday, beautiful. 💖
+    // ---------- MESSAGES ----------
+    var birthdayMessages = [
+        'Abi Cutelyn,\n\nToday is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.\n\nYou have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.\n\nI hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.\n\nHappy Birthday, beautiful soul. 💕',
+        'Abi,\n\nOn your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.\n\nI hope you see yourself the way I see you – strong, graceful, and full of love.\n\nYou are deeply cherished. Happy Birthday, Abi. 🌸',
+        'Dear Abi,\n\nSome people enter your life and leave a mark that stays forever. You are one of those people.\n\nYour smile, your laughter, your heart – everything about you is a blessing. I hope today and every day after reminds you of just how precious you are.\n\nHappy Birthday, beautiful. 💖'
     ];
 
-    const compliments = [
-        "You have the kind of smile that could heal a broken day.",
-        "Your heart is so pure – it makes everyone around you want to be better.",
-        "You carry yourself with grace, strength, and a quiet confidence that is truly inspiring.",
-        "The world is a better place because you are in it.",
-        "You have a way of making people feel understood and accepted – that is a rare gift.",
-        "Your presence alone brings peace and warmth to any room.",
-        "You are not just beautiful on the outside – your soul is even more radiant.",
-        "You are a masterpiece, and today the world celebrates you.",
-        "You make the ordinary feel extraordinary.",
-        "You are loved, admired, and appreciated more than you know."
+    var compliments = [
+        'You have the kind of smile that could heal a broken day.',
+        'Your heart is so pure – it makes everyone around you want to be better.',
+        'You carry yourself with grace, strength, and a quiet confidence that is truly inspiring.',
+        'The world is a better place because you are in it.',
+        'You have a way of making people feel understood and accepted – that is a rare gift.',
+        'Your presence alone brings peace and warmth to any room.',
+        'You are not just beautiful on the outside – your soul is even more radiant.',
+        'You are a masterpiece, and today the world celebrates you.',
+        'You make the ordinary feel extraordinary.',
+        'You are loved, admired, and appreciated more than you know.'
     ];
 
-    const poems = [
-        Pink petals fall, the sun shines bright,\nToday, Abi, you are the light.\nA year of grace, of love, of cheer,\nAnother trip around the sphere.\nMay joy and laughter fill your day,\nAnd love forever light your way.\nYou are cherished, you are gold,\nA story yet untold, but bold.\nHappy Birthday, sweet and true,\nThis world is brighter because of you. 🌸,
-        A rose so rare, a heart so true,\nToday the world is blessed with you.\nMay every moment bring you peace,\nAnd all your joys never cease.\nYou are a treasure, pure and bright,\nA guiding star, a gentle light.\nHappy Birthday, Abi – stay bold,\nYour story is still being told. ✨,
-        The sun may rise, the moon may glow,\nBut you, Abi, outshine them both, you know.\nWith every laugh, with every tear,\nYou've filled this world with love and cheer.\nToday is yours – enjoy the ride,\nWith grace and strength, you'll still abide.\nHappy Birthday, sweet and wise,\nThe light in every morning sky. 🌅
+    var poems = [
+        'Pink petals fall, the sun shines bright,\nToday, Abi, you are the light.\nA year of grace, of love, of cheer,\nAnother trip around the sphere.\nMay joy and laughter fill your day,\nAnd love forever light your way.\nYou are cherished, you are gold,\nA story yet untold, but bold.\nHappy Birthday, sweet and true,\nThis world is brighter because of you. 🌸',
+        'A rose so rare, a heart so true,\nToday the world is blessed with you.\nMay every moment bring you peace,\nAnd all your joys never cease.\nYou are a treasure, pure and bright,\nA guiding star, a gentle light.\nHappy Birthday, Abi – stay bold,\nYour story is still being told. ✨',
+        'The sun may rise, the moon may glow,\nBut you, Abi, outshine them both, you know.\nWith every laugh, with every tear,\nYou\'ve filled this world with love and cheer.\nToday is yours – enjoy the ride,\nWith grace and strength, you\'ll still abide.\nHappy Birthday, sweet and wise,\nThe light in every morning sky. 🌅'
     ];
 
-    const surprises = [
-        🎂 Surprise, Abi!\n\nYou are not just a year older – you are a year stronger, wiser, and even more beautiful.\nThis cake is a symbol of all the sweet moments you have given the world.\nMay the year ahead bring you more love, more laughter, and more reasons to smile.\nYou are deeply loved. 💖,
-        🎁 A birthday surprise for you, Abi!\n\nYou deserve a celebration as grand as your heart.\nEvery day you make people smile without knowing it.\nYou are a blessing to everyone who knows you.\nKeep being the amazing person you are. 💕,
-        🎉 Happy Birthday, Abi!\n\nHere is your surprise: You are braver than you believe, stronger than you seem, and more loved than you can ever imagine.\nToday, the world celebrates you – and I celebrate you too.\nEnjoy every moment. You've earned it. 🌹
+    var surprises = [
+        '🎂 Surprise, Abi!\n\nYou are not just a year older – you are a year stronger, wiser, and even more beautiful.\nThis cake is a symbol of all the sweet moments you have given the world.\nMay the year ahead bring you more love, more laughter, and more reasons to smile.\nYou are deeply loved. 💖',
+        '🎁 A birthday surprise for you, Abi!\n\nYou deserve a celebration as grand as your heart.\nEvery day you make people smile without knowing it.\nYou are a blessing to everyone who knows you.\nKeep being the amazing person you are. 💕',
+        '🎉 Happy Birthday, Abi!\n\nHere is your surprise: You are braver than you believe, stronger than you seem, and more loved than you can ever imagine.\nToday, the world celebrates you – and I celebrate you too.\nEnjoy every moment. You\'ve earned it. 🌹'
     ];
 
-    const secretMessage = Abi,\n\nI have been waiting for the right moment to tell you something.\n\nYou are not just beautiful – you are the kind of beautiful that changes people.\nYou make the world feel softer, warmer, and more worth living in.\n\nEvery time you laugh, the universe smiles with you.\nEvery time you speak, you heal something in someone's heart.\nYou don't just exist – you create meaning wherever you go.\n\nI don't know if you fully understand how rare you are.\nBut I do.\n\nYou are a once-in-a-lifetime soul, Abi.\nAnd I am grateful to know you. 💫;
+    var secretMessage = 'Abi,\n\nI have been waiting for the right moment to tell you something.\n\nYou are not just beautiful – you are the kind of beautiful that changes people.\nYou make the world feel softer, warmer, and more worth living in.\n\nEvery time you laugh, the universe smiles with you.\nEvery time you speak, you heal something in someone\'s heart.\nYou don\'t just exist – you create meaning wherever you go.\n\nI don\'t know if you fully understand how rare you are.\nBut I do.\n\nYou are a once-in-a-lifetime soul, Abi.\nAnd I am grateful to know you. 💫';
 
-    // ========== OPEN MESSAGE ==========
+    // ---------- Open Message ----------
     function openMessage(type) {
         var title = '';
         var content = '';
@@ -481,19 +401,14 @@
             content = pick;
         }
 
-        // Convert newlines to <br> for HTML display
         content = content.replace(/\n/g, '<br>');
-
-        messageCard.innerHTML = `
-            <div class="msg-title">${title}</div>
-            ${content}
-        `;
+        messageCard.innerHTML = '<div class="msg-title">' + title + '</div>' + content;
         menu.style.display = 'none';
         messageView.style.display = 'flex';
         exitScreen.style.display = 'none';
     }
 
-    // ========== SECRET ==========
+    // ---------- Secret ----------
     function openSecret() {
         document.getElementById('passwordModal').style.display = 'flex';
         document.getElementById('passwordInput').value = '';
@@ -509,10 +424,7 @@
         if (input === 'abi_cutelyn!') {
             closePasswordModal();
             var content = secretMessage.replace(/\n/g, '<br>');
-            messageCard.innerHTML = `
-                <div class="secret-title">💖 Secret Message</div>
-                ${content}
-            `;
+            messageCard.innerHTML = '<div class="secret-title">💖 Secret Message</div>' + content;
             menu.style.display = 'none';
             messageView.style.display = 'flex';
             exitScreen.style.display = 'none';
@@ -524,13 +436,11 @@
     }
 
     document.getElementById('passwordInput').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            submitPassword();
-        }
+        if (e.key === 'Enter') { submitPassword(); }
     });
 
-    // ========== INSTALL ==========
-    let deferredPrompt = null;
+    // ---------- Install ----------
+    var deferredPrompt = null;
     window.addEventListener('beforeinstallprompt', function(e) {
         e.preventDefault();
         deferredPrompt = e;
@@ -546,10 +456,7 @@
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then(function(choiceResult) {
                 if (choiceResult.outcome === 'accepted') {
-                    messageCard.innerHTML = `
-                        <div class="msg-title">✅ App Installed!</div>
-                        Thank you for installing. Enjoy the app, Abi! 🎉
-                    `;
+                    messageCard.innerHTML = '<div class="msg-title">✅ App Installed!</div>Thank you for installing. Enjoy the app, Abi! 🎉';
                     menu.style.display = 'none';
                     messageView.style.display = 'flex';
                 } else {
@@ -566,7 +473,7 @@
         document.getElementById('iosModal').style.display = 'none';
     }
 
-    // ========== EXIT ==========
+    // ---------- Exit ----------
     function exitApp() {
         audio.pause();
         audio.currentTime = 0;
@@ -574,9 +481,9 @@
         messageView.style.display = 'none';
         exitScreen.style.display = 'block';
         var exitMsg = document.querySelector('#exitScreen .goodbye');
-        if (exitMsg) exitMsg.innerHTML = '💕 Thank you for spending this time with me, Abi.';
+        if (exitMsg) { exitMsg.innerHTML = '💕 Thank you for spending this time with me, Abi.'; }
         var exitSub = document.querySelector('#exitScreen div[style*="color: #ffb6c1"]');
-        if (exitSub) exitSub.innerHTML = 'You are a treasure to everyone who knows you.<br>Stay radiant. 💫';
+        if (exitSub) { exitSub.innerHTML = 'You are a treasure to everyone who knows you.<br>Stay radiant. 💫'; }
     }
 </script>
 </body>
