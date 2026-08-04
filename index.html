@@ -84,37 +84,35 @@
             border: 2px solid #ff69b4;
             margin-bottom: 10px;
         }
-        .menu {
+        .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 14px;
             width: 100%;
             max-width: 400px;
             margin: 14px auto 20px;
-            justify-items: center;
         }
-        .menu button {
-            background: rgba(255, 105, 180, 0.15);
-            border: 1px solid rgba(255, 105, 180, 0.35);
-            border-radius: 50px;
-            padding: 12px 14px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #ffb6c1;
+        .card-item {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 105, 180, 0.25);
+            border-radius: 20px;
+            padding: 18px 10px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.25s ease;
             backdrop-filter: blur(4px);
-            text-align: center;
-            white-space: nowrap;
-            width: 100%;
-            max-width: 180px;
-            min-width: 120px;
         }
-        .menu button:active { transform: scale(0.95); background: rgba(255, 105, 180, 0.3); }
-        .menu button.install { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.12); }
-        .menu button.secret { border-color: #ffd700; color: #ffd700; background: rgba(255, 215, 0, 0.1); }
-        .menu button.exit { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255, 80, 80, 0.1); }
-        .menu button.full { grid-column: 1 / -1; max-width: 200px; justify-self: center; }
+        .card-item:active { transform: scale(0.96); background: rgba(255, 105, 180, 0.15); }
+        .card-item .icon { font-size: 2.2rem; display: block; margin-bottom: 4px; }
+        .card-item .title { font-size: 0.95rem; font-weight: 600; color: #ffb6c1; }
+        .card-item .desc { font-size: 0.7rem; color: #b08ba0; margin-top: 2px; }
+        .card-item.install { border-color: #4CAF50; }
+        .card-item.install .title { color: #4CAF50; }
+        .card-item.secret { border-color: #ffd700; }
+        .card-item.secret .title { color: #ffd700; }
+        .card-item.exit { border-color: #ff6b6b; }
+        .card-item.exit .title { color: #ff6b6b; }
+        .card-item.full { grid-column: 1 / -1; max-width: 200px; justify-self: center; }
         #messageView { display: none; width: 100%; flex-direction: column; align-items: center; padding: 6px 0; }
         #messageView .back-btn {
             background: rgba(255,255,255,0.08);
@@ -231,14 +229,18 @@
         }
         .ios-modal .modal-content .close-btn:active { transform: scale(0.95); }
         @media (max-width: 400px) {
-            .menu button { font-size: 0.8rem; padding: 10px 8px; min-width: 90px; }
+            .card-item { padding: 14px 8px; }
+            .card-item .icon { font-size: 1.8rem; }
+            .card-item .title { font-size: 0.85rem; }
             .container { padding: 18px 12px; }
             #messageView .card { font-size: 0.9rem; padding: 18px 14px; }
             .modal-box { padding: 18px 14px; }
         }
         @media (max-width: 350px) {
-            .menu { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .menu button { font-size: 0.75rem; padding: 10px 6px; min-width: 70px; }
+            .cards-grid { gap: 10px; }
+            .card-item { padding: 12px 6px; }
+            .card-item .icon { font-size: 1.5rem; }
+            .card-item .title { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -260,14 +262,42 @@
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
         <h1 style="font-size: 1.4rem; margin-bottom: 2px;">🎉 Happy Birthday</h1>
         <div class="sub" style="font-size:0.85rem;">Choose an option</div>
-        <div class="menu">
-            <button onclick="openMsg('birthday')">💌 Birthday</button>
-            <button onclick="openMsg('compliment')">✨ Compliment</button>
-            <button onclick="openMsg('poem')">📜 Poem</button>
-            <button onclick="openMsg('surprise')">🎂 Surprise</button>
-            <button class="secret" onclick="openSecret()">🔒 Secret</button>
-            <button class="install" onclick="installApp()">📲 Install</button>
-            <button class="exit full" onclick="exitApp()">🚪 Exit</button>
+        <div class="cards-grid">
+            <div class="card-item" onclick="openMsg('birthday')">
+                <span class="icon">💌</span>
+                <div class="title">Birthday</div>
+                <div class="desc">Special message</div>
+            </div>
+            <div class="card-item" onclick="openMsg('compliment')">
+                <span class="icon">✨</span>
+                <div class="title">Compliment</div>
+                <div class="desc">Random praise</div>
+            </div>
+            <div class="card-item" onclick="openMsg('poem')">
+                <span class="icon">📜</span>
+                <div class="title">Poem</div>
+                <div class="desc">Short verse</div>
+            </div>
+            <div class="card-item" onclick="openMsg('surprise')">
+                <span class="icon">🎂</span>
+                <div class="title">Surprise</div>
+                <div class="desc">Sweet treat</div>
+            </div>
+            <div class="card-item secret" onclick="openSecret()">
+                <span class="icon">🔒</span>
+                <div class="title">Secret</div>
+                <div class="desc">Password protected</div>
+            </div>
+            <div class="card-item install" onclick="installApp()">
+                <span class="icon">📲</span>
+                <div class="title">Install</div>
+                <div class="desc">Add to home screen</div>
+            </div>
+            <div class="card-item exit full" onclick="exitApp()">
+                <span class="icon">🚪</span>
+                <div class="title">Exit</div>
+                <div class="desc">Goodbye</div>
+            </div>
         </div>
         <div class="footer">💖 For you</div>
     </div>
