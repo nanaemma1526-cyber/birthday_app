@@ -8,44 +8,328 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
-        /* (same styles as before – keep them) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #1a0c12; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; margin: 0; }
-        .container { max-width: 500px; width: 100%; background: rgba(255, 200, 220, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 40px; padding: 30px 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255, 105, 180, 0.3); color: #fff; text-align: center; }
-        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, #ff69b4, #ff1493); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .sub { font-size: 1rem; color: #ffb6c1; margin-bottom: 20px; }
-        #welcomeScreen .profile-pic { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid #ff69b4; box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3); margin: 10px auto 20px; display: block; }
-        #welcomeScreen .enter-btn { background: #ff69b4; color: #1a0c12; border: none; padding: 14px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 60px; cursor: pointer; transition: all 0.3s ease; margin-top: 20px; box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4); }
-        #welcomeScreen .enter-btn:active { transform: scale(0.95); }
-        #menuScreen { display: none; }
-        #menuScreen .profile-pic-small { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #ff69b4; margin-bottom: 15px; }
-        .menu { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 30px; }
-        .menu button { background: rgba(255, 105, 180, 0.15); border: 1px solid rgba(255, 105, 180, 0.4); border-radius: 60px; padding: 16px 20px; font-size: 1.1rem; font-weight: 600; color: #ffb6c1; cursor: pointer; transition: all 0.25s ease; backdrop-filter: blur(4px); letter-spacing: 0.3px; }
-        .menu button:active { transform: scale(0.96); background: rgba(255, 105, 180, 0.3); }
-        .menu button.install { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.1); }
-        .menu button.secret { border-color: #ffd700; color: #ffd700; background: rgba(255, 215, 0, 0.1); }
-        .menu button.exit { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255, 80, 80, 0.1); }
-        .output { background: rgba(0,0,0,0.3); border-radius: 20px; padding: 20px 16px; min-height: 100px; margin-top: 10px; border-left: 4px solid #ff69b4; font-size: 1.05rem; line-height: 1.6; text-align: left; white-space: pre-wrap; word-break: break-word; }
-        .output .title { color: #ff69b4; font-weight: 600; font-size: 1.2rem; margin-bottom: 6px; }
-        .output .secret-title { color: #ffd700; font-weight: 600; font-size: 1.2rem; margin-bottom: 6px; }
-        .ascii { font-family: monospace; font-size: 0.75rem; line-height: 1.2; color: #ff69b4; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 12px; overflow-x: auto; }
-        #exitScreen { display: none; text-align: center; }
-        #exitScreen .profile-pic-exit { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #ff69b4; box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3); margin: 20px auto; display: block; }
-        #exitScreen .goodbye { font-size: 1.6rem; color: #ff69b4; margin-top: 20px; }
-        .footer { margin-top: 25px; font-size: 0.8rem; color: #b08ba0; }
-        @media (max-width: 400px) { h1 { font-size: 1.8rem; } .menu button { padding: 14px 16px; font-size: 1rem; } }
-        /* Modal for iOS instructions */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; }
-        .modal-content { background: #1a0c12; padding: 30px; border-radius: 30px; max-width: 400px; text-align: center; border: 2px solid #ff69b4; color: #fff; }
-        .modal-content h2 { color: #ff69b4; margin-bottom: 15px; }
-        .modal-content img { width: 60px; margin: 10px 0; }
-        .modal-content .close-btn { background: #ff69b4; border: none; padding: 10px 25px; border-radius: 40px; color: #1a0c12; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a0c12;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            min-height: 80vh;
+            background: rgba(255, 200, 220, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 30px 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .sub {
+            font-size: 1rem;
+            color: #ffb6c1;
+            margin-bottom: 20px;
+        }
+        /* Welcome Screen */
+        #welcomeScreen .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff69b4;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+            margin: 10px auto 20px;
+            display: block;
+        }
+        #welcomeScreen .enter-btn {
+            background: #ff69b4;
+            color: #1a0c12;
+            border: none;
+            padding: 14px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+        }
+        #welcomeScreen .enter-btn:active {
+            transform: scale(0.95);
+        }
+        /* Menu Screen */
+        #menuScreen {
+            display: none;
+            width: 100%;
+        }
+        #menuScreen .profile-pic-small {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff69b4;
+            margin-bottom: 15px;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            margin: 20px 0 30px;
+        }
+        .menu button {
+            background: rgba(255, 105, 180, 0.15);
+            border: 1px solid rgba(255, 105, 180, 0.4);
+            border-radius: 60px;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffb6c1;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.3px;
+        }
+        .menu button:active {
+            transform: scale(0.96);
+            background: rgba(255, 105, 180, 0.3);
+        }
+        .menu button.install {
+            border-color: #4CAF50;
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .menu button.secret {
+            border-color: #ffd700;
+            color: #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+        .menu button.exit {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+            background: rgba(255, 80, 80, 0.1);
+        }
+        /* Message View (full card) */
+        #messageView {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px 0;
+        }
+        #messageView .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ff69b4;
+            color: #ff69b4;
+            padding: 10px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            transition: all 0.2s ease;
+        }
+        #messageView .back-btn:active {
+            transform: scale(0.95);
+        }
+        #messageView .card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            padding: 30px 20px;
+            width: 100%;
+            border-left: 5px solid #ff69b4;
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #f0e0e6;
+            min-height: 200px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        #messageView .card .msg-title {
+            color: #ff69b4;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #messageView .card .secret-title {
+            color: #ffd700;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        /* Exit Screen */
+        #exitScreen {
+            display: none;
+            text-align: center;
+            width: 100%;
+        }
+        #exitScreen .profile-pic-exit {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff69b4;
+            box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
+            margin: 20px auto;
+            display: block;
+        }
+        #exitScreen .goodbye {
+            font-size: 1.6rem;
+            color: #ff69b4;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #b08ba0;
+        }
+        /* Custom Password Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-box {
+            background: #1a0c12;
+            padding: 30px;
+            border-radius: 30px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #ffd700;
+            color: #fff;
+        }
+        .modal-box h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .modal-box input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: 1px solid #ffd700;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+        }
+        .modal-box input::placeholder {
+            color: #aaa;
+        }
+        .modal-box .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .modal-box .modal-buttons button {
+            padding: 12px 30px;
+            border-radius: 40px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .modal-box .modal-buttons .submit-btn {
+            background: #ffd700;
+            color: #1a0c12;
+        }
+        .modal-box .modal-buttons .cancel-btn {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid #555;
+        }
+        .modal-box .modal-buttons button:active {
+            transform: scale(0.95);
+        }
+        /* iOS Modal (install instructions) */
+        .ios-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .ios-modal .modal-content {
+            background: #1a0c12;
+            padding: 30px;
+            border-radius: 30px;
+            max-width: 400px;
+            text-align: center;
+            border: 2px solid #ff69b4;
+            color: #fff;
+        }
+        .ios-modal .modal-content h2 {
+            color: #ff69b4;
+            margin-bottom: 15px;
+        }
+        .ios-modal .modal-content .close-btn {
+            background: #ff69b4;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            color: #1a0c12;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .ios-modal .modal-content .close-btn:active {
+            transform: scale(0.95);
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 1.8rem; }
+            .menu button { padding: 14px 16px; font-size: 1rem; }
+            #messageView .card { font-size: 0.95rem; padding: 20px 15px; }
+            .modal-box { padding: 20px; }
+        }
     </style>
 </head>
 <body>
 <div class="container" id="app">
 
-    <!-- WELCOME SCREEN -->
+    <!-- ===== WELCOME SCREEN ===== -->
     <div id="welcomeScreen">
         <h1>🎂 Happy Birthday</h1>
         <div class="sub">✨ A special app for you ✨</div>
@@ -55,30 +339,34 @@
         <div class="footer">Made with love 💕</div>
     </div>
 
-    <!-- MENU SCREEN -->
+    <!-- ===== MENU SCREEN ===== -->
     <div id="menuScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
         <h1 style="font-size: 1.6rem; margin-bottom: 5px;">🎉 Happy Birthday</h1>
         <div class="sub">Choose an option below</div>
 
         <div class="menu">
-            <button onclick="showMessage()">💌 Birthday Message</button>
-            <button onclick="showCompliment()">✨ Random Compliment</button>
-            <button onclick="showPoem()">📜 Small Poem</button>
-            <button onclick="showSurprise()">🎂 Birthday Surprise</button>
-            <button class="secret" onclick="showSecretPrompt()">🔒 Secret Message</button>
+            <button onclick="openMessage('birthday')">💌 Birthday Message</button>
+            <button onclick="openMessage('compliment')">✨ Random Compliment</button>
+            <button onclick="openMessage('poem')">📜 Small Poem</button>
+            <button onclick="openMessage('surprise')">🎂 Birthday Surprise</button>
+            <button class="secret" onclick="openSecret()">🔒 Secret Message</button>
             <button class="install" onclick="installApp()">📲 Install App</button>
             <button class="exit" onclick="exitApp()">🚪 Exit</button>
         </div>
 
-        <div class="output" id="output">
-            <span class="title">🌸 Hello, Abi!</span><br>
-            Pick an option to see something special.
-        </div>
         <div class="footer">💖 For you</div>
     </div>
 
-    <!-- EXIT SCREEN -->
+    <!-- ===== MESSAGE VIEW ===== -->
+    <div id="messageView">
+        <button class="back-btn" onclick="goBackToMenu()">← Back to menu</button>
+        <div class="card" id="messageCard">
+            <!-- content will be inserted here -->
+        </div>
+    </div>
+
+    <!-- ===== EXIT SCREEN ===== -->
     <div id="exitScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-exit">
         <div class="goodbye">💕 Thank you for using this app.</div>
@@ -88,18 +376,27 @@
 
 </div>
 
-<!-- Modal for iOS instructions -->
-<div id="iosModal" class="modal">
+<!-- ===== CUSTOM PASSWORD MODAL ===== -->
+<div class="modal-overlay" id="passwordModal">
+    <div class="modal-box">
+        <h2>🔒 Enter password</h2>
+        <input type="password" id="passwordInput" placeholder="Type password..." autofocus>
+        <div class="modal-buttons">
+            <button class="cancel-btn" onclick="closePasswordModal()">Cancel</button>
+            <button class="submit-btn" onclick="submitPassword()">Submit</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== iOS INSTALL MODAL ===== -->
+<div class="ios-modal" id="iosModal">
     <div class="modal-content">
         <h2>📲 Install on iPhone</h2>
-        <p>To install this app on your home screen:</p>
-        <ol style="text-align: left;">
-            <li>Tap the <strong>Share icon</strong> (square with arrow) at the bottom.</li>
-            <li>Scroll down and tap <strong>"Add to Home Screen"</strong>.</li>
-            <li>Tap <strong>"Add"</strong> in the top right.</li>
-        </ol>
-        <div style="font-size: 2rem; margin: 10px 0;">📤 ➕ 🏠</div>
-        <button class="close-btn" onclick="closeModal()">Got it!</button>
+        <p style="margin-bottom: 15px;">To add this app to your home screen:</p>
+        <div style="font-size: 1.8rem; margin: 10px 0;">📤 → 🏠</div>
+        <p style="margin: 10px 0 5px;">1. Tap the <strong>Share icon</strong> (square with arrow).</p>
+        <p style="margin: 5px 0 15px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
+        <button class="close-btn" onclick="closeIosModal()">Got it!</button>
     </div>
 </div>
 
@@ -112,116 +409,237 @@
     // ---------- DOM refs ----------
     const welcome = document.getElementById('welcomeScreen');
     const menu = document.getElementById('menuScreen');
+    const messageView = document.getElementById('messageView');
+    const messageCard = document.getElementById('messageCard');
     const exitScreen = document.getElementById('exitScreen');
-    const output = document.getElementById('output');
 
-    // ---------- Enter function ----------
+    // ---------- Enter ----------
     function enterApp() {
         audio.play().catch(function(e) { console.log('Audio play blocked:', e); });
         welcome.style.display = 'none';
-        menu.style.display = 'block';
+        menu.style.display = 'flex';
+        messageView.style.display = 'none';
         exitScreen.style.display = 'none';
     }
 
-    // ---------- Menu functions ----------
-    function showMessage() {
-        output.innerHTML = `
-            <span class="title">💌 Birthday Message</span><br><br>
-            Abi Cutelyn,<br><br>
-            Today is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.<br><br>
-            You have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.<br><br>
-            I hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.<br><br>
-            Happy Birthday, beautiful soul. 💕
+    // ---------- Navigation ----------
+    function goBackToMenu() {
+        menu.style.display = 'flex';
+        messageView.style.display = 'none';
+        exitScreen.style.display = 'none';
+    }
+
+    // ---------- Message Arrays ----------
+    const birthdayMessages = [
+        `Abi Cutelyn,<br><br>
+        Today is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.<br><br>
+        You have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.<br><br>
+        I hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.<br><br>
+        Happy Birthday, beautiful soul. 💕`,
+
+        `Abi,<br><br>
+        On your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.<br><br>
+        I hope you see yourself the way I see you – strong, graceful, and full of love.<br><br>
+        You are deeply cherished. Happy Birthday, Abi. 🌸`,
+
+        `Dear Abi,<br><br>
+        Some people enter your life and leave a mark that stays forever. You are one of those people.<br><br>
+        Your smile, your laughter, your heart – everything about you is a blessing. I hope today and every day after reminds you of just how precious you are.<br><br>
+        Happy Birthday, beautiful. 💖`
+    ];
+
+    const compliments = [
+        "You have the kind of smile that could heal a broken day.",
+        "Your heart is so pure – it makes everyone around you want to be better.",
+        "You carry yourself with grace, strength, and a quiet confidence that is truly inspiring.",
+        "The world is a better place because you are in it.",
+        "You have a way of making people feel understood and accepted – that is a rare gift.",
+        "Your presence alone brings peace and warmth to any room.",
+        "You are not just beautiful on the outside – your soul is even more radiant.",
+        "You are a masterpiece, and today the world celebrates you.",
+        "You make the ordinary feel extraordinary.",
+        "You are loved, admired, and appreciated more than you know."
+    ];
+
+    const poems = [
+        `Pink petals fall, the sun shines bright,<br>
+        Today, Abi, you are the light.<br>
+        A year of grace, of love, of cheer,<br>
+        Another trip around the sphere.<br>
+        May joy and laughter fill your day,<br>
+        And love forever light your way.<br>
+        You are cherished, you are gold,<br>
+        A story yet untold, but bold.<br>
+        Happy Birthday, sweet and true,<br>
+        This world is brighter because of you. 🌸`,
+
+        `A rose so rare, a heart so true,<br>
+        Today the world is blessed with you.<br>
+        May every moment bring you peace,<br>
+        And all your joys never cease.<br>
+        You are a treasure, pure and bright,<br>
+        A guiding star, a gentle light.<br>
+        Happy Birthday, Abi – stay bold,<br>
+        Your story is still being told. ✨`,
+
+        `The sun may rise, the moon may glow,<br>
+        But you, Abi, outshine them both, you know.<br>
+        With every laugh, with every tear,<br>
+        You've filled this world with love and cheer.<br>
+        Today is yours – enjoy the ride,<br>
+        With grace and strength, you'll still abide.<br>
+        Happy Birthday, sweet and wise,<br>
+        The light in every morning sky. 🌅`
+    ];
+
+    const surprises = [
+        `🎂 Surprise, Abi!<br><br>
+        You are not just a year older – you are a year stronger, wiser, and even more beautiful.<br>
+        This cake is a symbol of all the sweet moments you have given the world.<br>
+        May the year ahead bring you more love, more laughter, and more reasons to smile.<br>
+        You are deeply loved. 💖`,
+
+        `🎁 A birthday surprise for you, Abi!<br><br>
+        You deserve a celebration as grand as your heart.<br>
+        Every day you make people smile without knowing it.<br>
+        You are a blessing to everyone who knows you.<br>
+        Keep being the amazing person you are. 💕`,
+
+        `🎉 Happy Birthday, Abi!<br><br>
+        Here is your surprise: You are braver than you believe, stronger than you seem, and more loved than you can ever imagine.<br>
+        Today, the world celebrates you – and I celebrate you too.<br>
+        Enjoy every moment. You've earned it. 🌹`
+    ];
+
+    // ---------- Open Message ----------
+    function openMessage(type) {
+        var title = '';
+        var content = '';
+
+        if (type === 'birthday') {
+            var pick = birthdayMessages[Math.floor(Math.random() * birthdayMessages.length)];
+            title = '💌 Birthday Message';
+            content = pick;
+        }
+        else if (type === 'compliment') {
+            var pick = compliments[Math.floor(Math.random() * compliments.length)];
+            title = '✨ Random Compliment';
+            content = '✨ ' + pick;
+        }
+        else if (type === 'poem') {
+            var pick = poems[Math.floor(Math.random() * poems.length)];
+            title = '📜 Small Poem';
+            content = pick;
+        }
+        else if (type === 'surprise') {
+            var pick = surprises[Math.floor(Math.random() * surprises.length)];
+            title = '🎂 Birthday Surprise';
+            content = pick;
+        }
+
+        messageCard.innerHTML = `
+            <div class="msg-title">${title}</div>
+            ${content}
         `;
+        menu.style.display = 'none';
+        messageView.style.display = 'flex';
+        exitScreen.style.display = 'none';
     }
 
-    function showCompliment() {
-        var compliments = [
-            "You have the kind of smile that could heal a broken day.",
-            "Your heart is so pure – it makes everyone around you want to be better.",
-            "You carry yourself with grace, strength, and a quiet confidence that is truly inspiring.",
-            "The world is a better place because you are in it.",
-            "You have a way of making people feel understood and accepted – that is a rare gift.",
-            "Your presence alone brings peace and warmth to any room.",
-            "You are not just beautiful on the outside – your soul is even more radiant."
-        ];
-        var pick = compliments[Math.floor(Math.random() * compliments.length)];
-        output.innerHTML = '<span class="title">✨ Random Compliment</span><br><br>✨ ' + pick;
+    // ---------- Secret Message (Stronger Version) ----------
+    const secretMessage = `
+        Abi,<br><br>
+        I have been waiting for the right moment to tell you something.<br><br>
+        You are not just beautiful – you are the kind of beautiful that changes people.<br>
+        You make the world feel softer, warmer, and more worth living in.<br><br>
+        Every time you laugh, the universe smiles with you.<br>
+        Every time you speak, you heal something in someone's heart.<br>
+        You don't just exist – you create meaning wherever you go.<br><br>
+        I don't know if you fully understand how rare you are.<br>
+        But I do.<br><br>
+        You are a once-in-a-lifetime soul, Abi.<br>
+        And I am grateful to know you. 💫
+    `;
+
+    // ---------- Password Modal ----------
+    function openSecret() {
+        document.getElementById('passwordModal').style.display = 'flex';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('passwordInput').focus();
     }
 
-    function showPoem() {
-        var poem = "Pink petals fall, the sun shines bright,\nToday, Abi, you are the light.\nA year of grace, of love, of cheer,\nAnother trip around the sphere.\nMay joy and laughter fill your day,\nAnd love forever light your way.\nYou are cherished, you are gold,\nA story yet untold, but bold.\nHappy Birthday, sweet and true,\nThis world is brighter because of you. 🌸";
-        output.innerHTML = '<span class="title">📜 Small Poem</span><br><br><pre style="font-family:inherit; white-space:pre-wrap;">' + poem + '</pre>';
+    function closePasswordModal() {
+        document.getElementById('passwordModal').style.display = 'none';
     }
 
-    function showSurprise() {
-        var art = "\n   🎂\n     ===\n     (   )\n    ( : : )\n     ( : )\n      ( )\n   🎉 Happy Birthday, Abi! 🎉\n        ";
-        output.innerHTML = '<span class="title">🎂 Birthday Surprise</span><div class="ascii">' + art + '</div><br>🎁 Surprise, Abi!<br>You are not just a year older – you are a year stronger, wiser, and even more beautiful.<br>This cake is a symbol of all the sweet moments you have given the world.<br>May the year ahead bring you more love, more laughter, and more reasons to smile.<br>You are deeply loved. 💖';
-    }
-
-    // ---------- SECRET MESSAGE ----------
-    function showSecretPrompt() {
-        var pwd = prompt("🔒 Enter the secret password:");
-        if (pwd === null) return;
-        if (pwd === "abi_cutelyn!") {
-            output.innerHTML = `
-                <span class="secret-title">💖 Secret Message</span><br><br>
-                Abi,<br><br>
-                This message is just for you.<br>
-                I know you carry so much on your heart, but I want you to know that you are never alone.<br>
-                You are stronger than you think, braver than you feel, and more loved than you can imagine.<br>
-                This day is a reminder of how precious you are – not just to me, but to everyone who knows you.<br>
-                Keep shining. Keep being you. 🌹
+    function submitPassword() {
+        var input = document.getElementById('passwordInput').value;
+        if (input === 'abi_cutelyn!') {
+            closePasswordModal();
+            messageCard.innerHTML = `
+                <div class="secret-title">💖 Secret Message</div>
+                ${secretMessage}
             `;
+            menu.style.display = 'none';
+            messageView.style.display = 'flex';
+            exitScreen.style.display = 'none';
         } else {
-            alert("❌ Wrong password. Try again.");
+            alert('❌ Wrong password. Try again.');
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('passwordInput').focus();
         }
     }
 
-    // ---------- INSTALL APP ----------
-    let deferredPrompt = null;
+    // Enter key support for password
+    document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            submitPassword();
+        }
+    });
 
-    // Listen for the beforeinstallprompt event (Android)
+    // ---------- Install App ----------
+    let deferredPrompt = null;
     window.addEventListener('beforeinstallprompt', function(e) {
         e.preventDefault();
         deferredPrompt = e;
     });
 
     function installApp() {
-        // Check if it's iOS (Safari) by detecting user agent
         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) {
-            // Show iOS modal with instructions
             document.getElementById('iosModal').style.display = 'flex';
             return;
         }
-
-        // Android: use deferred prompt if available
         if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then(function(choiceResult) {
                 if (choiceResult.outcome === 'accepted') {
-                    output.innerHTML = '<span class="title">✅ App installed!</span><br>Thank you for installing! 🎉';
+                    messageCard.innerHTML = `
+                        <div class="msg-title">✅ App Installed!</div>
+                        Thank you for installing. Enjoy the app, Abi! 🎉
+                    `;
+                    menu.style.display = 'none';
+                    messageView.style.display = 'flex';
                 } else {
-                    output.innerHTML = '<span class="title">❌ Installation declined</span><br>You can try again later.';
+                    alert('Installation declined. You can try again later.');
                 }
                 deferredPrompt = null;
             });
         } else {
-            // Fallback: show instructions for Android
-            alert("Tap the three dots (⋮) and choose 'Add to Home screen' or 'Install app'.");
+            alert('Tap the three dots (⋮) and choose "Add to Home screen" or "Install app".');
         }
     }
 
-    function closeModal() {
+    function closeIosModal() {
         document.getElementById('iosModal').style.display = 'none';
     }
 
-    // ---------- EXIT ----------
+    // ---------- Exit ----------
     function exitApp() {
         audio.pause();
         audio.currentTime = 0;
         menu.style.display = 'none';
+        messageView.style.display = 'none';
         exitScreen.style.display = 'block';
         var exitMsg = document.querySelector('#exitScreen .goodbye');
         if (exitMsg) exitMsg.innerHTML = '💕 Thank you for spending this time with me, Abi.';
