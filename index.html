@@ -158,8 +158,15 @@
         .card-item.exit .title { color: #ff6b6b; }
         .card-item.full { grid-column: 1 / -1; max-width: 180px; justify-self: center; }
         .menu-footer { font-size: 0.75rem; color: #b08ba0; text-align: center; margin-top: 6px; }
-        /* ----- MESSAGE VIEW ----- */
-        #messageView { display: none; width: 100%; flex: 1; flex-direction: column; padding: 6px 0; }
+        /* ----- MESSAGE VIEW (SCROLLABLE) ----- */
+        #messageView {
+            display: none;
+            width: 100%;
+            flex: 1;
+            flex-direction: column;
+            padding: 6px 0;
+            height: 100%;
+        }
         #messageView .back-btn {
             background: rgba(255,255,255,0.08);
             border: 1px solid #ff69b4;
@@ -171,6 +178,7 @@
             margin-bottom: 14px;
             align-self: flex-start;
             transition: all 0.2s ease;
+            flex-shrink: 0;
         }
         #messageView .back-btn:active { transform: scale(0.95); }
         #messageView .card {
@@ -180,16 +188,37 @@
             width: 100%;
             border-left: 4px solid #ff69b4;
             text-align: left;
-            line-height: 1.8;
+            line-height: 1.9;
             font-size: 1rem;
             color: #f0e0e6;
-            min-height: 150px;
             word-wrap: break-word;
             white-space: pre-wrap;
             flex: 1;
+            overflow-y: auto;
+            max-height: 75vh;
+            min-height: 200px;
         }
-        #messageView .card .msg-title { color: #ff69b4; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
-        #messageView .card .secret-title { color: #ffd700; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
+        #messageView .card::-webkit-scrollbar { width: 4px; }
+        #messageView .card::-webkit-scrollbar-track { background: transparent; }
+        #messageView .card::-webkit-scrollbar-thumb { background: #ff69b4; border-radius: 10px; }
+        #messageView .card .msg-title {
+            color: #ff69b4;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+            padding-bottom: 10px;
+        }
+        #messageView .card .secret-title {
+            color: #ffd700;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+        }
         /* ----- EXIT SCREEN ----- */
         #exitScreen { display: none; text-align: center; width: 100%; flex: 1; justify-content: center; flex-direction: column; align-items: center; }
         #exitScreen .profile-pic-exit {
@@ -284,16 +313,15 @@
             #welcomeScreen .enter-btn { padding: 14px 36px; font-size: 1.2rem; }
             .card-item .icon { font-size: 1.6rem; }
             .card-item .title { font-size: 0.85rem; }
-            .card-item .desc { font-size: 0.65rem; }
             .card-item { padding: 14px 8px; }
             .cards-grid { gap: 10px; }
+            #messageView .card { font-size: 0.9rem; padding: 18px 14px; max-height: 65vh; }
         }
         @media (max-width: 360px) {
             #welcomeScreen h1 { font-size: 1.6rem; }
             #welcomeScreen .profile-pic { width: 120px; height: 120px; }
             .card-item .icon { font-size: 1.4rem; }
             .card-item .title { font-size: 0.75rem; }
-            .card-item .desc { font-size: 0.6rem; }
         }
         @media (min-width: 600px) {
             .container { max-width: 520px; padding: 28px 20px; }
@@ -303,7 +331,7 @@
             .card-item { padding: 22px 16px; }
             .card-item .icon { font-size: 2.4rem; }
             .card-item .title { font-size: 1.1rem; }
-            .card-item .desc { font-size: 0.8rem; }
+            #messageView .card { font-size: 1.05rem; padding: 28px 24px; max-height: 70vh; }
         }
     </style>
 </head>
@@ -434,38 +462,46 @@
         exitScr.style.display = 'none';
     }
 
+    // ========== LONGER, MEANINGFUL MESSAGES ==========
+
     var bdayMsgs = [
-        'Abi Cutelyn,\n\nToday is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.\n\nYou have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.\n\nI hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.\n\nHappy Birthday, beautiful soul. 💕',
-        'Abi,\n\nOn your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.\n\nI hope you see yourself the way I see you – strong, graceful, and full of love.\n\nYou are deeply cherished. Happy Birthday, Abi. 🌸',
-        'Dear Abi,\n\nSome people enter your life and leave a mark that stays forever. You are one of those people.\n\nYour smile, your laughter, your heart – everything about you is a blessing. I hope today and every day after reminds you of just how precious you are.\n\nHappy Birthday, beautiful. 💖'
+        `💌 Abi Cutelyn,\n\nToday is not just a date on the calendar. It is the day the world became a little brighter, a little warmer, and a lot more beautiful.\n\nYou have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.\n\nI hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.\n\nHappy Birthday, beautiful soul. 💕`,
+
+        `🌷 Abi,\n\nOn your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.\n\nI hope you see yourself the way I see you – strong, graceful, and full of love. You deserve all the joy that comes your way.\n\nYou are deeply cherished. Happy Birthday, Abi. 🌸`,
+
+        `💖 Dear Abi,\n\nSome people enter your life and leave a mark that stays forever. You are one of those people.\n\nYour smile, your laughter, your heart – everything about you is a blessing. I hope today and every day after reminds you of just how precious you are.\n\nHappy Birthday, beautiful. 💖`
     ];
 
     var comps = [
-        'You have the kind of smile that could heal a broken day.',
-        'Your heart is so pure – it makes everyone around you want to be better.',
-        'You carry yourself with grace, strength, and a quiet confidence that is truly inspiring.',
-        'The world is a better place because you are in it.',
-        'You have a way of making people feel understood and accepted – that is a rare gift.',
-        'Your presence alone brings peace and warmth to any room.',
-        'You are not just beautiful on the outside – your soul is even more radiant.',
-        'You are a masterpiece, and today the world celebrates you.',
-        'You make the ordinary feel extraordinary.',
-        'You are loved, admired, and appreciated more than you know.'
+        "Your smile could light up the darkest room and heal the heaviest heart. ✨",
+        "You have a gentle strength that inspires everyone around you. 🌸",
+        "Your heart is so pure – it makes people want to be better just by being near you. 💖",
+        "You carry yourself with grace, strength, and a quiet confidence that is truly inspiring. 🌷",
+        "The world is a better, warmer place simply because you are in it. 🌍",
+        "You have a rare gift of making people feel understood and deeply accepted. 💫",
+        "Your presence alone brings peace and calm to any room you enter. 🕊️",
+        "You are not just beautiful on the outside – your soul is radiant and bright. 🌟",
+        "You are a masterpiece, and today the world celebrates you. 🎨",
+        "You make the ordinary feel extraordinary. You are truly one of a kind. 🌹"
     ];
 
     var poems = [
-        'Pink petals fall, the sun shines bright,\nToday, Abi, you are the light.\nA year of grace, of love, of cheer,\nAnother trip around the sphere.\nMay joy and laughter fill your day,\nAnd love forever light your way.\nYou are cherished, you are gold,\nA story yet untold, but bold.\nHappy Birthday, sweet and true,\nThis world is brighter because of you. 🌸',
-        'A rose so rare, a heart so true,\nToday the world is blessed with you.\nMay every moment bring you peace,\nAnd all your joys never cease.\nYou are a treasure, pure and bright,\nA guiding star, a gentle light.\nHappy Birthday, Abi – stay bold,\nYour story is still being told. ✨',
-        'The sun may rise, the moon may glow,\nBut you, Abi, outshine them both, you know.\nWith every laugh, with every tear,\nYou\'ve filled this world with love and cheer.\nToday is yours – enjoy the ride,\nWith grace and strength, you\'ll still abide.\nHappy Birthday, sweet and wise,\nThe light in every morning sky. 🌅'
+        `🌸 Pink petals fall, the sun shines bright,\nToday, Abi, you are the light.\nA year of grace, of love, of cheer,\nAnother trip around the sphere.\nMay joy and laughter fill your day,\nAnd love forever light your way.\nYou are cherished, you are gold,\nA story yet untold, but bold.\nHappy Birthday, sweet and true,\nThis world is brighter because of you. 🌸`,
+
+        `🌹 A rose so rare, a heart so true,\nToday the world is blessed with you.\nMay every moment bring you peace,\nAnd all your joys never cease.\nYou are a treasure, pure and bright,\nA guiding star, a gentle light.\nHappy Birthday, Abi – stay bold,\nYour story is still being told. ✨`,
+
+        `🌅 The sun may rise, the moon may glow,\nBut you, Abi, outshine them both, you know.\nWith every laugh, with every tear,\nYou've filled this world with love and cheer.\nToday is yours – enjoy the ride,\nWith grace and strength, you'll still abide.\nHappy Birthday, sweet and wise,\nThe light in every morning sky. 🌅`
     ];
 
     var surprises = [
-        '🎂 Surprise, Abi!\n\nYou are not just a year older – you are a year stronger, wiser, and even more beautiful.\nThis cake is a symbol of all the sweet moments you have given the world.\nMay the year ahead bring you more love, more laughter, and more reasons to smile.\nYou are deeply loved. 💖',
-        '🎁 A birthday surprise for you, Abi!\n\nYou deserve a celebration as grand as your heart.\nEvery day you make people smile without knowing it.\nYou are a blessing to everyone who knows you.\nKeep being the amazing person you are. 💕',
-        '🎉 Happy Birthday, Abi!\n\nHere is your surprise: You are braver than you believe, stronger than you seem, and more loved than you can ever imagine.\nToday, the world celebrates you – and I celebrate you too.\nEnjoy every moment. You\'ve earned it. 🌹'
+        `🎂 Surprise, Abi!\n\nYou are not just a year older – you are a year stronger, wiser, and even more beautiful.\n\nThis cake is a symbol of all the sweet moments you have given the world. Every slice represents a memory you have made, a heart you have touched, and a life you have brightened.\n\nMay the year ahead bring you more love, more laughter, and more reasons to smile.\n\nYou are deeply loved. 💖`,
+
+        `🎁 A birthday surprise for you, Abi!\n\nYou deserve a celebration as grand as your heart.\n\nEvery day you make people smile without even knowing it. You are a blessing to everyone who knows you.\n\nNever forget how much you are valued. Keep being the amazing person you are.\n\nYou are a gift to this world. 💕`,
+
+        `🎉 Happy Birthday, Abi!\n\nHere is your surprise: You are braver than you believe, stronger than you seem, and more loved than you can ever imagine.\n\nToday, the world celebrates you – and I celebrate you too.\n\nEnjoy every moment. You've earned it. 🌹`
     ];
 
-    var secret = 'Abi,\n\nI have been waiting for the right moment to tell you something.\n\nYou are not just beautiful – you are the kind of beautiful that changes people.\nYou make the world feel softer, warmer, and more worth living in.\n\nEvery time you laugh, the universe smiles with you.\nEvery time you speak, you heal something in someone\'s heart.\nYou don\'t just exist – you create meaning wherever you go.\n\nI don\'t know if you fully understand how rare you are.\nBut I do.\n\nYou are a once-in-a-lifetime soul, Abi.\nAnd I am grateful to know you. 💫';
+    var secret = `💖 Abi,\n\nI have been waiting for the right moment to tell you something.\n\nYou are not just beautiful – you are the kind of beautiful that changes people. You make the world feel softer, warmer, and more worth living in.\n\nEvery time you laugh, the universe smiles with you. Every time you speak, you heal something in someone's heart. You don't just exist – you create meaning wherever you go.\n\nI don't know if you fully understand how rare you are.\n\nBut I do.\n\nYou are a once-in-a-lifetime soul, Abi.\n\nAnd I am grateful to know you. 💫`;
 
     function openMsg(type) {
         var title = '', content = '';
