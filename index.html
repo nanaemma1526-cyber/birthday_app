@@ -350,6 +350,17 @@
 
     <!-- ===== MENU SCREEN ===== -->
     <div id="menuScreen">
+        <!-- ===== iOS MODAL ===== -->
+<div class="ios-modal" id="iosModal">
+    <div class="modal-content">
+        <h2>📲 Install on iPhone</h2>
+        <p style="margin-bottom:10px;">To add this app to your home screen:</p>
+        <div style="font-size:1.6rem; margin:6px 0;">📤 → 🏠</div>
+        <p style="margin:6px 0 4px;">1. Tap the <strong>Share</strong> icon.</p>
+        <p style="margin:4px 0 10px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
+        <button class="close-btn" onclick="closeIos()">Got it!</button>
+    </div>
+</div>
         <div class="header">
             <h1>🎉 Happy Birthday</h1>
             <div class="sub">Choose an option</div>
@@ -560,6 +571,44 @@
         var exitSub = document.querySelector('#exitScreen .sub-exit');
         if (exitSub) { exitSub.innerHTML = 'You are a treasure to everyone who knows you.<br>Stay radiant. 💫'; }
     }
+    // ========== INSTALL APP ==========
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+function installApp() {
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    if (isIOS) {
+        document.getElementById('iosModal').style.display = 'flex';
+        return;
+    }
+
+    // Android – try native prompt first
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choiceResult) {
+            if (choiceResult.outcome === 'accepted') {
+                msgCard.innerHTML = '<div class="msg-title">✅ App Installed!</div>Thank you for installing. Enjoy the app, Abi! 🎉';
+                menu.style.display = 'none';
+                msgView.style.display = 'flex';
+            } else {
+                alert('Installation declined. You can try again later.');
+            }
+            deferredPrompt = null;
+        });
+        return;
+    }
+
+    // Fallback: show manual instructions
+    alert('To install on Android:\n1. Tap the three dots (⋮)\n2. Tap "Add to Home screen"\n3. Follow the prompts');
+}
+
+function closeIos() {
+    document.getElementById('iosModal').style.display = 'none';
+}
 </script>
 </body>
 </html>
