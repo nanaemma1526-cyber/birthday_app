@@ -16,18 +16,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 16px;
             margin: 0;
         }
         .container {
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
             min-height: 80vh;
             background: rgba(255, 200, 220, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 40px;
-            padding: 30px 20px;
+            border-radius: 36px;
+            padding: 24px 16px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             border: 1px solid rgba(255, 105, 180, 0.3);
             color: #fff;
@@ -38,124 +38,124 @@
             align-items: center;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, #ff69b4, #ff1493);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .sub {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #ffb6c1;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         #welcomeScreen .profile-pic {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff69b4;
             box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
-            margin: 10px auto 20px;
+            margin: 8px auto 16px;
             display: block;
         }
         #welcomeScreen .enter-btn {
             background: #ff69b4;
             color: #1a0c12;
             border: none;
-            padding: 14px 40px;
-            font-size: 1.3rem;
+            padding: 12px 36px;
+            font-size: 1.2rem;
             font-weight: bold;
             border-radius: 60px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 20px;
+            margin-top: 16px;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
         #welcomeScreen .enter-btn:active { transform: scale(0.95); }
         #menuScreen { display: none; width: 100%; }
         #menuScreen .profile-pic-small {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ff69b4;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         .menu {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             width: 100%;
-            margin: 15px 0 25px;
+            margin: 14px 0 20px;
         }
         .menu button {
             background: rgba(255, 105, 180, 0.15);
-            border: 1px solid rgba(255, 105, 180, 0.4);
-            border-radius: 60px;
-            padding: 14px 18px;
-            font-size: 1rem;
+            border: 1px solid rgba(255, 105, 180, 0.35);
+            border-radius: 50px;
+            padding: 12px 6px;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #ffb6c1;
             cursor: pointer;
             transition: all 0.25s ease;
             backdrop-filter: blur(4px);
-            letter-spacing: 0.3px;
-            width: 100%;
             text-align: center;
             word-break: keep-all;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            min-width: 0;
         }
-        .menu button:active { transform: scale(0.96); background: rgba(255, 105, 180, 0.3); }
-        .menu button.install { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.1); }
+        .menu button:active { transform: scale(0.95); background: rgba(255, 105, 180, 0.3); }
+        .menu button.install { border-color: #4CAF50; color: #4CAF50; background: rgba(76, 175, 80, 0.12); }
         .menu button.secret { border-color: #ffd700; color: #ffd700; background: rgba(255, 215, 0, 0.1); }
         .menu button.exit { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255, 80, 80, 0.1); }
-        #messageView { display: none; width: 100%; flex-direction: column; align-items: center; text-align: center; padding: 10px 0; }
+        .menu button.full { grid-column: 1 / -1; }
+        #messageView { display: none; width: 100%; flex-direction: column; align-items: center; padding: 6px 0; }
         #messageView .back-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.08);
             border: 1px solid #ff69b4;
             color: #ff69b4;
-            padding: 10px 25px;
+            padding: 8px 22px;
             border-radius: 40px;
             cursor: pointer;
-            font-size: 1rem;
-            margin-bottom: 25px;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
             transition: all 0.2s ease;
         }
         #messageView .back-btn:active { transform: scale(0.95); }
         #messageView .card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 30px;
-            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 24px;
+            padding: 24px 18px;
             width: 100%;
-            border-left: 5px solid #ff69b4;
+            border-left: 4px solid #ff69b4;
             text-align: left;
             line-height: 1.8;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #f0e0e6;
-            min-height: 200px;
+            min-height: 160px;
             word-wrap: break-word;
             white-space: pre-wrap;
         }
-        #messageView .card .msg-title { color: #ff69b4; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
-        #messageView .card .secret-title { color: #ffd700; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; text-align: center; }
+        #messageView .card .msg-title { color: #ff69b4; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
+        #messageView .card .secret-title { color: #ffd700; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
         #exitScreen { display: none; text-align: center; width: 100%; }
         #exitScreen .profile-pic-exit {
-            width: 200px;
-            height: 200px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff69b4;
             box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
-            margin: 20px auto;
+            margin: 16px auto;
             display: block;
         }
-        #exitScreen .goodbye { font-size: 1.6rem; color: #ff69b4; margin-top: 20px; }
-        .footer { margin-top: 25px; font-size: 0.8rem; color: #b08ba0; }
+        #exitScreen .goodbye { font-size: 1.4rem; color: #ff69b4; margin-top: 16px; }
+        .footer { margin-top: 20px; font-size: 0.75rem; color: #b08ba0; }
         .modal-overlay {
             display: none;
             position: fixed;
@@ -170,43 +170,31 @@
         }
         .modal-box {
             background: #1a0c12;
-            padding: 30px;
-            border-radius: 30px;
-            max-width: 380px;
+            padding: 24px 20px;
+            border-radius: 28px;
+            max-width: 360px;
             width: 90%;
             text-align: center;
             border: 2px solid #ffd700;
             color: #fff;
         }
-        .modal-box h2 { color: #ffd700; margin-bottom: 20px; font-size: 1.5rem; }
+        .modal-box h2 { color: #ffd700; margin-bottom: 16px; font-size: 1.3rem; }
         .modal-box input {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border-radius: 30px;
             border: 1px solid #ffd700;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             color: #fff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-align: center;
             outline: none;
         }
-        .modal-box input::placeholder { color: #aaa; }
-        .modal-box .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        .modal-box .modal-buttons button {
-            padding: 12px 30px;
-            border-radius: 40px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+        .modal-box input::placeholder { color: #888; }
+        .modal-box .modal-buttons { display: flex; gap: 10px; margin-top: 16px; justify-content: center; }
+        .modal-box .modal-buttons button { padding: 10px 24px; border-radius: 40px; border: none; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
         .modal-box .modal-buttons .submit-btn { background: #ffd700; color: #1a0c12; }
-        .modal-box .modal-buttons .cancel-btn { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #555; }
+        .modal-box .modal-buttons .cancel-btn { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid #555; }
         .modal-box .modal-buttons button:active { transform: scale(0.95); }
         .ios-modal {
             display: none;
@@ -222,33 +210,34 @@
         }
         .ios-modal .modal-content {
             background: #1a0c12;
-            padding: 30px;
-            border-radius: 30px;
-            max-width: 400px;
+            padding: 24px 20px;
+            border-radius: 28px;
+            max-width: 380px;
             text-align: center;
             border: 2px solid #ff69b4;
             color: #fff;
         }
-        .ios-modal .modal-content h2 { color: #ff69b4; margin-bottom: 15px; }
+        .ios-modal .modal-content h2 { color: #ff69b4; margin-bottom: 12px; }
         .ios-modal .modal-content .close-btn {
             background: #ff69b4;
             border: none;
-            padding: 10px 25px;
+            padding: 10px 24px;
             border-radius: 40px;
             color: #1a0c12;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 12px;
             cursor: pointer;
         }
         .ios-modal .modal-content .close-btn:active { transform: scale(0.95); }
-        @media (max-width: 450px) {
-            h1 { font-size: 1.8rem; }
-            .menu button { padding: 12px 14px; font-size: 0.9rem; white-space: normal; word-break: break-word; }
-            #messageView .card { font-size: 0.95rem; padding: 20px 15px; }
-            .modal-box { padding: 20px; }
+        @media (max-width: 400px) {
+            .menu button { font-size: 0.75rem; padding: 10px 4px; white-space: normal; word-break: break-word; }
+            .container { padding: 18px 12px; }
+            #messageView .card { font-size: 0.9rem; padding: 18px 14px; }
+            .modal-box { padding: 18px 14px; }
         }
-        @media (max-width: 380px) {
-            .menu button { font-size: 0.8rem; padding: 10px 12px; }
+        @media (max-width: 350px) {
+            .menu { grid-template-columns: 1fr; gap: 8px; }
+            .menu button { font-size: 0.9rem; padding: 12px; white-space: nowrap; }
         }
     </style>
 </head>
@@ -260,7 +249,7 @@
         <h1>🎂 Happy Birthday</h1>
         <div class="sub">✨ A special app for you ✨</div>
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic">
-        <div style="font-size: 1.4rem; font-weight: 300; color: #ffb6c1; margin: 5px 0 10px;">Abi Cutelyn</div>
+        <div style="font-size: 1.2rem; font-weight: 300; color: #ffb6c1; margin: 4px 0 8px;">Abi Cutelyn</div>
         <button class="enter-btn" id="enterBtn">Enter 💖</button>
         <div class="footer">Made with love 💕</div>
     </div>
@@ -268,23 +257,23 @@
     <!-- MENU SCREEN -->
     <div id="menuScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
-        <h1 style="font-size: 1.6rem; margin-bottom: 5px;">🎉 Happy Birthday</h1>
-        <div class="sub">Choose an option below</div>
+        <h1 style="font-size: 1.4rem; margin-bottom: 2px;">🎉 Happy Birthday</h1>
+        <div class="sub" style="font-size:0.85rem;">Choose an option</div>
         <div class="menu">
-            <button onclick="openMsg('birthday')">💌 Birthday Message</button>
-            <button onclick="openMsg('compliment')">✨ Random Compliment</button>
-            <button onclick="openMsg('poem')">📜 Small Poem</button>
-            <button onclick="openMsg('surprise')">🎂 Birthday Surprise</button>
-            <button class="secret" onclick="openSecret()">🔒 Secret Message</button>
-            <button class="install" onclick="installApp()">📲 Install App</button>
-            <button class="exit" onclick="exitApp()">🚪 Exit</button>
+            <button onclick="openMsg('birthday')">💌 Birthday Msg</button>
+            <button onclick="openMsg('compliment')">✨ Compliment</button>
+            <button onclick="openMsg('poem')">📜 Poem</button>
+            <button onclick="openMsg('surprise')">🎂 Surprise</button>
+            <button class="secret" onclick="openSecret()">🔒 Secret</button>
+            <button class="install" onclick="installApp()">📲 Install</button>
+            <button class="exit full" onclick="exitApp()">🚪 Exit</button>
         </div>
         <div class="footer">💖 For you</div>
     </div>
 
     <!-- MESSAGE VIEW -->
     <div id="messageView">
-        <button class="back-btn" onclick="goBack()">← Back to menu</button>
+        <button class="back-btn" onclick="goBack()">← Back</button>
         <div class="card" id="msgCard"></div>
     </div>
 
@@ -292,8 +281,8 @@
     <div id="exitScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-exit">
         <div class="goodbye">💕 Thank you for using this app.</div>
-        <div style="font-size: 1.2rem; color: #ffb6c1; margin-top: 10px;">You are loved. ❤️</div>
-        <div class="footer" style="margin-top: 30px;">✨ See you soon ✨</div>
+        <div style="font-size: 1.1rem; color: #ffb6c1; margin-top: 8px;">You are loved. ❤️</div>
+        <div class="footer" style="margin-top: 24px;">✨ See you soon ✨</div>
     </div>
 </div>
 
@@ -313,28 +302,25 @@
 <div class="ios-modal" id="iosModal">
     <div class="modal-content">
         <h2>📲 Install on iPhone</h2>
-        <p style="margin-bottom: 15px;">To add this app to your home screen:</p>
-        <div style="font-size: 1.8rem; margin: 10px 0;">📤 → 🏠</div>
-        <p style="margin: 10px 0 5px;">1. Tap the <strong>Share icon</strong> (square with arrow).</p>
-        <p style="margin: 5px 0 15px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
+        <p style="margin-bottom:12px;">To add this app to your home screen:</p>
+        <div style="font-size:1.6rem; margin:8px 0;">📤 → 🏠</div>
+        <p style="margin:8px 0 4px;">1. Tap the <strong>Share</strong> icon.</p>
+        <p style="margin:4px 0 12px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
         <button class="close-btn" onclick="closeIos()">Got it!</button>
     </div>
 </div>
 
 <script>
-    // ===== AUDIO =====
     var audio = new Audio('birthday.mp3');
     audio.loop = true;
     audio.volume = 0.6;
 
-    // ===== DOM =====
     var welcome = document.getElementById('welcomeScreen');
     var menu = document.getElementById('menuScreen');
     var msgView = document.getElementById('messageView');
     var msgCard = document.getElementById('msgCard');
     var exitScr = document.getElementById('exitScreen');
 
-    // ===== ENTER BUTTON =====
     document.getElementById('enterBtn').addEventListener('click', function() {
         audio.play().catch(function(e) {});
         welcome.style.display = 'none';
@@ -343,14 +329,12 @@
         exitScr.style.display = 'none';
     });
 
-    // ===== NAVIGATION =====
     function goBack() {
         menu.style.display = 'flex';
         msgView.style.display = 'none';
         exitScr.style.display = 'none';
     }
 
-    // ===== MESSAGES =====
     var bdayMsgs = [
         'Abi Cutelyn,\n\nToday is not just a date on the calendar – it is the day the world became a little brighter, a little warmer, and a lot more beautiful.\n\nYou have a way of making people feel seen, valued, and loved – without even trying. Your kindness, your laughter, and your gentle strength leave a mark on everyone who knows you.\n\nI hope today reminds you of how much you are adored. Not just today, but every single day. You are a gift, Abi. A rare, precious, irreplaceable gift.\n\nHappy Birthday, beautiful soul. 💕',
         'Abi,\n\nOn your birthday, I want you to know that you are one of the most beautiful souls I have ever met. Your presence brings light to every room you walk into, and your kindness touches everyone around you.\n\nI hope you see yourself the way I see you – strong, graceful, and full of love.\n\nYou are deeply cherished. Happy Birthday, Abi. 🌸',
@@ -384,7 +368,6 @@
 
     var secret = 'Abi,\n\nI have been waiting for the right moment to tell you something.\n\nYou are not just beautiful – you are the kind of beautiful that changes people.\nYou make the world feel softer, warmer, and more worth living in.\n\nEvery time you laugh, the universe smiles with you.\nEvery time you speak, you heal something in someone\'s heart.\nYou don\'t just exist – you create meaning wherever you go.\n\nI don\'t know if you fully understand how rare you are.\nBut I do.\n\nYou are a once-in-a-lifetime soul, Abi.\nAnd I am grateful to know you. 💫';
 
-    // ===== OPEN MESSAGE =====
     function openMsg(type) {
         var title = '', content = '';
         if (type === 'birthday') { title = '💌 Birthday Message'; content = bdayMsgs[Math.floor(Math.random() * bdayMsgs.length)]; }
@@ -398,7 +381,6 @@
         exitScr.style.display = 'none';
     }
 
-    // ===== SECRET =====
     function openSecret() { document.getElementById('pwdModal').style.display = 'flex'; document.getElementById('pwdInput').value = ''; document.getElementById('pwdInput').focus(); }
     function closePwd() { document.getElementById('pwdModal').style.display = 'none'; }
     function submitPwd() {
@@ -414,7 +396,6 @@
     }
     document.getElementById('pwdInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') { submitPwd(); } });
 
-    // ===== INSTALL =====
     var deferredPrompt = null;
     window.addEventListener('beforeinstallprompt', function(e) { e.preventDefault(); deferredPrompt = e; });
     function installApp() {
@@ -430,11 +411,10 @@
                 } else { alert('Installation declined. You can try again later.'); }
                 deferredPrompt = null;
             });
-        } else { alert('Tap the three dots (⋮) and choose "Add to Home screen" or "Install app".'); }
+        } else { alert('Tap ⋮ and choose "Add to Home screen" or "Install app".'); }
     }
     function closeIos() { document.getElementById('iosModal').style.display = 'none'; }
 
-    // ===== EXIT =====
     function exitApp() {
         audio.pause(); audio.currentTime = 0;
         menu.style.display = 'none';
