@@ -122,8 +122,6 @@
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 20px 16px;
-
-Emmanuel Boakye, [04.08.2026 15:01]
 min-height: 100px;
             margin-top: 10px;
             border-left: 4px solid #ff69b4;
@@ -188,7 +186,7 @@ min-height: 100px;
 <body>
 <div class="container" id="app">
 
-    <!-- ========== WELCOME SCREEN ========== -->
+    <!-- WELCOME SCREEN -->
     <div id="welcomeScreen">
         <h1>🎂 Happy Birthday</h1>
         <div class="sub">✨ A special app for you ✨</div>
@@ -198,7 +196,7 @@ min-height: 100px;
         <div class="footer">Made with love 💕</div>
     </div>
 
-    <!-- ========== MENU SCREEN ========== -->
+    <!-- MENU SCREEN -->
     <div id="menuScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
         <h1 style="font-size: 1.6rem; margin-bottom: 5px;">🎉 Happy Birthday</h1>
@@ -220,7 +218,7 @@ min-height: 100px;
         <div class="footer">💖 For you</div>
     </div>
 
-    <!-- ========== EXIT SCREEN ========== -->
+    <!-- EXIT SCREEN -->
     <div id="exitScreen">
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-exit">
         <div class="goodbye">💕 Thank you for using this app.</div>
@@ -241,8 +239,6 @@ min-height: 100px;
     const menu = document.getElementById('menuScreen');
     const exitScreen = document.getElementById('exitScreen');
     const output = document.getElementById('output');
-
-Emmanuel Boakye, [04.08.2026 15:01]
 // ---------- Enter button ----------
     document.getElementById('enterBtn').addEventListener('click', function() {
         audio.play().catch(e => console.log('Audio play blocked:', e));
@@ -307,7 +303,6 @@ Emmanuel Boakye, [04.08.2026 15:01]
     function showSecretPrompt() {
         const pwd = prompt("🔒 Enter the secret password:");
         if (pwd === null) {
-            // User cancelled
             return;
         }
         const correctPassword = "abi_cutelyn!";
@@ -317,10 +312,8 @@ Emmanuel Boakye, [04.08.2026 15:01]
                 Abi,<br><br>
                 This message is just for you.<br>
                 I know you carry so much on your heart, but I want you to know that you are never alone.<br>
-
-Emmanuel Boakye, [04.08.2026 15:01]
-You are stronger than you think, braver than you feel, and more loved than you can imagine.<br>
-                This day is a reminder of how precious you are – not just to me, but to everyone who knows you.<br>
+                You are stronger than you think, braver than you feel, and more loved than you can imagine.<br>
+This day is a reminder of how precious you are – not just to me, but to everyone who knows you.<br>
                 Keep shining. Keep being you. 🌹
             `;
         } else {
@@ -334,7 +327,6 @@ You are stronger than you think, braver than you feel, and more loved than you c
         audio.currentTime = 0;
         menu.style.display = 'none';
         exitScreen.style.display = 'block';
-        // Update exit message
         const exitMsg = document.querySelector('#exitScreen .goodbye');
         if (exitMsg) {
             exitMsg.innerHTML = '💕 Thank you for spending this time with me, Abi.';
