@@ -35,7 +35,7 @@
             flex-direction: column;
             align-items: center;
         }
-        /* ----- WELCOME SCREEN (Fixed) ----- */
+        /* ----- WELCOME SCREEN ----- */
         #welcomeScreen {
             width: 100%;
             display: flex;
@@ -284,6 +284,7 @@
             #welcomeScreen .enter-btn { padding: 14px 36px; font-size: 1.2rem; }
             .card-item .icon { font-size: 1.6rem; }
             .card-item .title { font-size: 0.85rem; }
+            .card-item .desc { font-size: 0.65rem; }
             .card-item { padding: 14px 8px; }
             .cards-grid { gap: 10px; }
         }
@@ -292,6 +293,7 @@
             #welcomeScreen .profile-pic { width: 120px; height: 120px; }
             .card-item .icon { font-size: 1.4rem; }
             .card-item .title { font-size: 0.75rem; }
+            .card-item .desc { font-size: 0.6rem; }
         }
         @media (min-width: 600px) {
             .container { max-width: 520px; padding: 28px 20px; }
@@ -328,38 +330,38 @@
         <div class="cards-grid">
             <div class="card-item" onclick="openMsg('birthday')">
                 <span class="icon">💌</span>
-                <div class="title">Birthday</div>
-                <div class="desc">Special message</div>
+                <div class="title">Birthday Message</div>
+                <div class="desc">A heartfelt note just for you</div>
             </div>
             <div class="card-item" onclick="openMsg('compliment')">
                 <span class="icon">✨</span>
-                <div class="title">Compliment</div>
-                <div class="desc">Random praise</div>
+                <div class="title">Random Compliment</div>
+                <div class="desc">A sweet word to brighten your day</div>
             </div>
             <div class="card-item" onclick="openMsg('poem')">
                 <span class="icon">📜</span>
-                <div class="title">Poem</div>
-                <div class="desc">Short verse</div>
+                <div class="title">Small Poem</div>
+                <div class="desc">A verse written with love</div>
             </div>
             <div class="card-item" onclick="openMsg('surprise')">
                 <span class="icon">🎂</span>
-                <div class="title">Surprise</div>
-                <div class="desc">Sweet treat</div>
+                <div class="title">Birthday Surprise</div>
+                <div class="desc">Something special just for you</div>
             </div>
             <div class="card-item secret" onclick="openSecret()">
                 <span class="icon">🔒</span>
-                <div class="title">Secret</div>
-                <div class="desc">Password protected</div>
+                <div class="title">Secret Message</div>
+                <div class="desc">A private note, password protected</div>
             </div>
             <div class="card-item install" onclick="installApp()">
                 <span class="icon">📲</span>
-                <div class="title">Install</div>
-                <div class="desc">Add to home screen</div>
+                <div class="title">Install App</div>
+                <div class="desc">Add this app to your home screen</div>
             </div>
             <div class="card-item exit full" onclick="exitApp()">
                 <span class="icon">🚪</span>
                 <div class="title">Exit</div>
-                <div class="desc">Goodbye</div>
+                <div class="desc">Close the app for now</div>
             </div>
         </div>
         <div class="menu-footer">💖 For you</div>
