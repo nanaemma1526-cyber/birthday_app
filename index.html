@@ -16,145 +16,163 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 16px;
+            padding: 12px;
             margin: 0;
         }
         .container {
             max-width: 480px;
             width: 100%;
-            min-height: 80vh;
+            min-height: 85vh;
             background: rgba(255, 200, 220, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-radius: 36px;
-            padding: 24px 16px;
+            border-radius: 32px;
+            padding: 18px 14px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
             border: 1px solid rgba(255, 105, 180, 0.3);
             color: #fff;
-            text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
         }
-        h1 {
-            font-size: 2rem;
+        /* ----- Compact Header ----- */
+        .app-header {
+            text-align: center;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+        .app-header h1 {
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 6px;
             background: linear-gradient(135deg, #ff69b4, #ff1493);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 2px;
         }
-        .sub {
-            font-size: 0.95rem;
+        .app-header .sub {
+            font-size: 0.85rem;
             color: #ffb6c1;
-            margin-bottom: 16px;
         }
+        /* ----- Welcome Screen ----- */
         #welcomeScreen .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff69b4;
             box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
-            margin: 8px auto 16px;
+            margin: 10px auto 14px;
             display: block;
         }
         #welcomeScreen .enter-btn {
             background: #ff69b4;
             color: #1a0c12;
             border: none;
-            padding: 12px 36px;
-            font-size: 1.2rem;
+            padding: 12px 32px;
+            font-size: 1.1rem;
             font-weight: bold;
             border-radius: 60px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 16px;
+            margin-top: 12px;
             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
         }
         #welcomeScreen .enter-btn:active { transform: scale(0.95); }
-        #menuScreen { display: none; width: 100%; }
+        /* ----- Menu Screen ----- */
+        #menuScreen {
+            display: none;
+            width: 100%;
+            flex: 1;
+            flex-direction: column;
+        }
         #menuScreen .profile-pic-small {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #ff69b4;
-            margin-bottom: 10px;
+            margin: 0 auto 6px;
+            display: block;
         }
         .cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 10px;
             width: 100%;
-            max-width: 400px;
-            margin: 14px auto 20px;
+            margin: 10px 0 12px;
+            flex: 1;
+            align-content: start;
         }
         .card-item {
             background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 105, 180, 0.25);
-            border-radius: 20px;
-            padding: 18px 10px;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            border-radius: 16px;
+            padding: 14px 8px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             backdrop-filter: blur(4px);
         }
-        .card-item:active { transform: scale(0.96); background: rgba(255, 105, 180, 0.15); }
-        .card-item .icon { font-size: 2.2rem; display: block; margin-bottom: 4px; }
-        .card-item .title { font-size: 0.95rem; font-weight: 600; color: #ffb6c1; }
-        .card-item .desc { font-size: 0.7rem; color: #b08ba0; margin-top: 2px; }
+        .card-item:active { transform: scale(0.95); background: rgba(255, 105, 180, 0.15); }
+        .card-item .icon { font-size: 1.8rem; display: block; margin-bottom: 2px; }
+        .card-item .title { font-size: 0.85rem; font-weight: 600; color: #ffb6c1; }
+        .card-item .desc { font-size: 0.65rem; color: #b08ba0; margin-top: 1px; }
         .card-item.install { border-color: #4CAF50; }
         .card-item.install .title { color: #4CAF50; }
         .card-item.secret { border-color: #ffd700; }
         .card-item.secret .title { color: #ffd700; }
         .card-item.exit { border-color: #ff6b6b; }
         .card-item.exit .title { color: #ff6b6b; }
-        .card-item.full { grid-column: 1 / -1; max-width: 200px; justify-self: center; }
-        #messageView { display: none; width: 100%; flex-direction: column; align-items: center; padding: 6px 0; }
+        .card-item.full { grid-column: 1 / -1; max-width: 160px; justify-self: center; }
+        .footer { font-size: 0.7rem; color: #b08ba0; text-align: center; margin-top: 6px; }
+        /* ----- Message View ----- */
+        #messageView { display: none; width: 100%; flex: 1; flex-direction: column; padding: 6px 0; }
         #messageView .back-btn {
             background: rgba(255,255,255,0.08);
             border: 1px solid #ff69b4;
             color: #ff69b4;
-            padding: 8px 22px;
+            padding: 8px 20px;
             border-radius: 40px;
             cursor: pointer;
-            font-size: 0.95rem;
-            margin-bottom: 18px;
+            font-size: 0.9rem;
+            margin-bottom: 14px;
+            align-self: flex-start;
             transition: all 0.2s ease;
         }
         #messageView .back-btn:active { transform: scale(0.95); }
         #messageView .card {
             background: rgba(0, 0, 0, 0.45);
-            border-radius: 24px;
-            padding: 24px 18px;
+            border-radius: 20px;
+            padding: 20px 16px;
             width: 100%;
             border-left: 4px solid #ff69b4;
             text-align: left;
-            line-height: 1.8;
-            font-size: 1rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
             color: #f0e0e6;
-            min-height: 160px;
+            min-height: 140px;
             word-wrap: break-word;
             white-space: pre-wrap;
+            flex: 1;
         }
-        #messageView .card .msg-title { color: #ff69b4; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
-        #messageView .card .secret-title { color: #ffd700; font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; text-align: center; }
-        #exitScreen { display: none; text-align: center; width: 100%; }
+        #messageView .card .msg-title { color: #ff69b4; font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; text-align: center; }
+        #messageView .card .secret-title { color: #ffd700; font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; text-align: center; }
+        /* ----- Exit Screen ----- */
+        #exitScreen { display: none; text-align: center; width: 100%; flex: 1; justify-content: center; }
         #exitScreen .profile-pic-exit {
-            width: 170px;
-            height: 170px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #ff69b4;
             box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
-            margin: 16px auto;
+            margin: 10px auto;
             display: block;
         }
-        #exitScreen .goodbye { font-size: 1.4rem; color: #ff69b4; margin-top: 16px; }
-        .footer { margin-top: 20px; font-size: 0.75rem; color: #b08ba0; }
+        #exitScreen .goodbye { font-size: 1.3rem; color: #ff69b4; margin-top: 12px; }
+        /* ----- Modals ----- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -169,15 +187,15 @@
         }
         .modal-box {
             background: #1a0c12;
-            padding: 24px 20px;
+            padding: 22px 18px;
             border-radius: 28px;
-            max-width: 360px;
+            max-width: 340px;
             width: 90%;
             text-align: center;
             border: 2px solid #ffd700;
             color: #fff;
         }
-        .modal-box h2 { color: #ffd700; margin-bottom: 16px; font-size: 1.3rem; }
+        .modal-box h2 { color: #ffd700; margin-bottom: 14px; font-size: 1.2rem; }
         .modal-box input {
             width: 100%;
             padding: 12px;
@@ -190,8 +208,8 @@
             outline: none;
         }
         .modal-box input::placeholder { color: #888; }
-        .modal-box .modal-buttons { display: flex; gap: 10px; margin-top: 16px; justify-content: center; }
-        .modal-box .modal-buttons button { padding: 10px 24px; border-radius: 40px; border: none; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
+        .modal-box .modal-buttons { display: flex; gap: 10px; margin-top: 14px; justify-content: center; }
+        .modal-box .modal-buttons button { padding: 10px 22px; border-radius: 40px; border: none; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
         .modal-box .modal-buttons .submit-btn { background: #ffd700; color: #1a0c12; }
         .modal-box .modal-buttons .cancel-btn { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid #555; }
         .modal-box .modal-buttons button:active { transform: scale(0.95); }
@@ -209,18 +227,18 @@
         }
         .ios-modal .modal-content {
             background: #1a0c12;
-            padding: 24px 20px;
+            padding: 22px 18px;
             border-radius: 28px;
-            max-width: 380px;
+            max-width: 360px;
             text-align: center;
             border: 2px solid #ff69b4;
             color: #fff;
         }
-        .ios-modal .modal-content h2 { color: #ff69b4; margin-bottom: 12px; }
+        .ios-modal .modal-content h2 { color: #ff69b4; margin-bottom: 10px; font-size: 1.2rem; }
         .ios-modal .modal-content .close-btn {
             background: #ff69b4;
             border: none;
-            padding: 10px 24px;
+            padding: 10px 22px;
             border-radius: 40px;
             color: #1a0c12;
             font-weight: bold;
@@ -228,19 +246,25 @@
             cursor: pointer;
         }
         .ios-modal .modal-content .close-btn:active { transform: scale(0.95); }
-        @media (max-width: 400px) {
-            .card-item { padding: 14px 8px; }
-            .card-item .icon { font-size: 1.8rem; }
-            .card-item .title { font-size: 0.85rem; }
-            .container { padding: 18px 12px; }
-            #messageView .card { font-size: 0.9rem; padding: 18px 14px; }
-            .modal-box { padding: 18px 14px; }
-        }
-        @media (max-width: 350px) {
-            .cards-grid { gap: 10px; }
-            .card-item { padding: 12px 6px; }
+        @media (max-width: 420px) {
+            .app-header h1 { font-size: 1.4rem; }
             .card-item .icon { font-size: 1.5rem; }
             .card-item .title { font-size: 0.8rem; }
+            .card-item .desc { font-size: 0.6rem; }
+            .card-item { padding: 12px 6px; }
+            .cards-grid { gap: 8px; }
+        }
+        @media (max-width: 360px) {
+            .card-item .icon { font-size: 1.3rem; }
+            .card-item .title { font-size: 0.7rem; }
+            .cards-grid { gap: 6px; }
+        }
+        @media (min-width: 600px) {
+            .container { max-width: 520px; padding: 24px 20px; }
+            .card-item { padding: 20px 14px; }
+            .card-item .icon { font-size: 2.2rem; }
+            .card-item .title { font-size: 1rem; }
+            .card-item .desc { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -249,19 +273,23 @@
 
     <!-- WELCOME SCREEN -->
     <div id="welcomeScreen">
-        <h1>🎂 Happy Birthday</h1>
-        <div class="sub">✨ A special app for you ✨</div>
+        <div class="app-header">
+            <h1>🎂 Happy Birthday</h1>
+            <div class="sub">✨ A special app for you ✨</div>
+        </div>
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic">
-        <div style="font-size: 1.2rem; font-weight: 300; color: #ffb6c1; margin: 4px 0 8px;">Abi Cutelyn</div>
+        <div style="font-size: 1.1rem; font-weight: 300; color: #ffb6c1; margin-bottom: 4px;">Abi Cutelyn</div>
         <button class="enter-btn" id="enterBtn">Enter 💖</button>
-        <div class="footer">Made with love 💕</div>
+        <div class="footer" style="margin-top:12px;">Made with love 💕</div>
     </div>
 
     <!-- MENU SCREEN -->
     <div id="menuScreen">
+        <div class="app-header">
+            <h1>🎉 Happy Birthday</h1>
+            <div class="sub">Choose an option</div>
+        </div>
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-small">
-        <h1 style="font-size: 1.4rem; margin-bottom: 2px;">🎉 Happy Birthday</h1>
-        <div class="sub" style="font-size:0.85rem;">Choose an option</div>
         <div class="cards-grid">
             <div class="card-item" onclick="openMsg('birthday')">
                 <span class="icon">💌</span>
@@ -310,10 +338,13 @@
 
     <!-- EXIT SCREEN -->
     <div id="exitScreen">
+        <div class="app-header">
+            <h1>🎂 Happy Birthday</h1>
+        </div>
         <img src="Abi Cutelyn.jpeg" alt="Abi Cutelyn" class="profile-pic-exit">
         <div class="goodbye">💕 Thank you for using this app.</div>
-        <div style="font-size: 1.1rem; color: #ffb6c1; margin-top: 8px;">You are loved. ❤️</div>
-        <div class="footer" style="margin-top: 24px;">✨ See you soon ✨</div>
+        <div style="font-size: 1rem; color: #ffb6c1; margin-top: 6px;">You are loved. ❤️</div>
+        <div class="footer" style="margin-top: 20px;">✨ See you soon ✨</div>
     </div>
 </div>
 
@@ -333,10 +364,10 @@
 <div class="ios-modal" id="iosModal">
     <div class="modal-content">
         <h2>📲 Install on iPhone</h2>
-        <p style="margin-bottom:12px;">To add this app to your home screen:</p>
-        <div style="font-size:1.6rem; margin:8px 0;">📤 → 🏠</div>
-        <p style="margin:8px 0 4px;">1. Tap the <strong>Share</strong> icon.</p>
-        <p style="margin:4px 0 12px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
+        <p style="margin-bottom:10px;">To add this app to your home screen:</p>
+        <div style="font-size:1.5rem; margin:6px 0;">📤 → 🏠</div>
+        <p style="margin:6px 0 4px;">1. Tap the <strong>Share</strong> icon.</p>
+        <p style="margin:4px 0 10px;">2. Tap <strong>"Add to Home Screen"</strong>.</p>
         <button class="close-btn" onclick="closeIos()">Got it!</button>
     </div>
 </div>
@@ -450,7 +481,7 @@
         audio.pause(); audio.currentTime = 0;
         menu.style.display = 'none';
         msgView.style.display = 'none';
-        exitScr.style.display = 'block';
+        exitScr.style.display = 'flex';
         var exitMsg = document.querySelector('#exitScreen .goodbye');
         if (exitMsg) { exitMsg.innerHTML = '💕 Thank you for spending this time with me, Abi.'; }
         var exitSub = document.querySelector('#exitScreen div[style*="color: #ffb6c1"]');
